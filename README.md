@@ -50,3 +50,5 @@ DirectoryIndex index.html index.php
     6.mysql-client_5.7.10-1ubuntu14.04_amd64.deb
     7.mysql-community-server_5.7.10-1ubuntu14.04_amd64.deb
  到底所有的环境都配置好了，接下来我们来安装php的扩展
+ 
+ 如果安装mysql需要库文件，使用<code>apt-get -f install</code>再次安装就可以了
