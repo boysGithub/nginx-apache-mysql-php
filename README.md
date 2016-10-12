@@ -8,7 +8,8 @@ Bulid PHP server environment
 download http://nginx.org/
 
 在安装nginx之前需要一个<a href="http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2">pcre(http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2)</a>的一个库才成正确的安装nginx
-直接进入nginx的目录执行<code>./configure --prefix=/usr/local/etc/nginx --with-pcre=~/pcre-8.39</code>
+直接进入nginx的目录执行<code>./configure --prefix=/usr/local/etc/nginx --with-pcre=~/pcre-8.39</code>如果执行php返回空白页面请在fastchi_params文件中加上fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+重启nginx，即可正常显示页面了。
 ##install apache
 
   download http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.23.tar.gz
@@ -54,3 +55,17 @@ DirectoryIndex index.html index.php
  到底所有的环境都配置好了，接下来我们来安装php的扩展
  
  如果安装mysql需要库文件，使用<code>apt-get -f install</code>再次安装就可以了
+ 
+ ##install marizdb
+ 安装命令<code>apt-get install mariadb-server</code>
+ 在<code>/etc/mysql/conf.d</code>创建mysqld_openstack.cnf的文件写入一下内容
+ 
+ <code>bind-address = 127.0.0.1
+default-storage-engine = innodb
+innodb_file_per_table
+collation-server = utf8_general_ci
+init-connect = 'SET NAMES utf8'
+character-set-server = utf8</code>
+
+  然后重新启动mysql<code>service mysql restart</code>
+  
