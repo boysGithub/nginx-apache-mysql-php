@@ -7,10 +7,12 @@ Bulid PHP server environment
 
 download http://nginx.org/
 
+在安装nginx之前需要一个<a href="http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2">pcre(http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2)</a>的一个库才成正确的安装nginx
+直接进入nginx的目录执行<code>./configure --prefix=/usr/local/etc/nginx --with-pcre=~/pcre-8.39</code>
 ##install apache
 
   download http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.23.tar.gz
-
+  
   在安装apache之前需要一个<a href="http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2">pcre(http://nchc.dl.sourceforge.net/project/pcre/pcre/8.39/pcre-8.39.tar.bz2)</a>的一个库才成正确的安装apache
   
   下载好以后解压<code>tar -jxvf pcre-8.39.tar.bz2</code>以后进入目录运行<code>./configure --prefix=/usr/local/etc/pcre</code>编译完成以后在<code>make && make install</code>
@@ -24,7 +26,7 @@ download http://nginx.org/
 ##insall PHP
  download http://cn2.php.net/distributions/php-7.0.11.tar.bz2 也可以去官网下载
  安装之前需要先安装一个库直接<code>apt-get install libxml2-dev</code>
- 进入解压的目录<code>cd php-7.0.11</code>使用<code>./configure --prefix=/usr/local/etc/php --with-apxs2=/usr/local/etc/apache/bin/apxs</code>然后使用<code>make && make install</code>安装过程比较久，可以利用这段时间安装mysql
+ 进入解压的目录<code>cd php-7.0.11</code>使用<code>./configure --prefix=/usr/local/etc/php --with-apxs2=/usr/local/etc/apache/bin/apxs</code>nginx安装需要加载fpm<code>./configure --prefix=/usr/local/etc/php --enable-fpm</code>然后使用<code>make && make install</code>安装过程比较久，可以利用这段时间安装mysql
  
  这里还需要配置apache和php的关联
  Apache与PHP整合：
